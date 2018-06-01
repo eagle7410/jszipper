@@ -1,0 +1,26 @@
+{
+  "name": "jszipper",
+  "version": "1.0.0",
+  "description": "wrapper for https://stuk.github.io/jszip/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eagle7410/jszipper.git"
+  },
+  "keywords": [
+    "zip"
+  ],
+  "author": "Igor Stcherbina <verycooleagle@gmail.com> (http://github.com/eagle7410)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eagle7410/jszipper/issues"
+  },
+  "homepage": "https://github.com/eagle7410/jszipper#readme",
+  "devDependencies": {
+    "jsdoc-to-markdown": "4.0.1"
+  },
+  "dependencies": {}
+}
