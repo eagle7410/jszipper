@@ -46,7 +46,7 @@ describe('Testing module zipper', function() {
 });
 
 ```
-xz## Version
+## Version
 1.0.1 - base.
 
 ## Extends
