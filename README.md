@@ -1,5 +1,6 @@
 # jszipper
 wrapper for https://stuk.github.io/jszip/
+
 <a name="fileSystemPromises"></a>
 
 ## fileSystemPromises : <code>Object</code>
