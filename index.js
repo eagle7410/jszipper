@@ -1,3 +1,3 @@
-const fsp = require('/fsp.js');
+const zipper = require('./zipper');
 
-module.exports = fsp;
+module.exports = zipper;

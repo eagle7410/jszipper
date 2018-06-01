@@ -1,17 +1,21 @@
 {
   "name": "jszipper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "wrapper for https://stuk.github.io/jszip/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/.bin/mocha",
+    "build-doc" : "node ./scripts/build-doc.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eagle7410/jszipper.git"
   },
   "keywords": [
-    "zip"
+    "zip",
+    "zipper",
+    "zip node",
+    "zip js"
   ],
   "author": "Igor Stcherbina <verycooleagle@gmail.com> (http://github.com/eagle7410)",
   "license": "MIT",
@@ -20,7 +24,11 @@
   },
   "homepage": "https://github.com/eagle7410/jszipper#readme",
   "devDependencies": {
-    "jsdoc-to-markdown": "4.0.1"
+    "jsdoc-to-markdown": "^4.0.1",
+    "mocha": "^5.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "fsp-eagle": "^1.0.1",
+    "jszip": "3.1.5"
+  }
 }

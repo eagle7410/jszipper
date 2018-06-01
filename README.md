@@ -1,45 +1,81 @@
 # jszipper
-wrapper for https://stuk.github.io/jszip/
+wrapper for [jszip](https://stuk.github.io/jszip/)
 
-<a name="fileSystemPromises"></a>
+## Install
+```bash
+npm i jszipper --save
+```
 
-## fileSystemPromises : <code>Object</code>
-**Kind**: global constant
+Example use from test
 
-* [fileSystemPromises](#fileSystemPromises) : <code>Object</code>
-    * [.mustdir(dirPath)](#fileSystemPromises.mustdir) ⇒ <code>Promise.&lt;void&gt;</code>
-    * [.mvdir(dirPath)](#fileSystemPromises.mvdir) ⇒ <code>Promise.&lt;boolean&gt;</code>
-    * [.mvfile(dirFile)](#fileSystemPromises.mvfile) ⇒ <code>Promise.&lt;boolean&gt;</code>
+```node
+// Libs
+const assert = require('assert');
+const Zipper = require('../zipper');
+const fsp    = require('fsp-eagle');
 
-<a name="fileSystemPromises.mustdir"></a>
+// Init
+const PATH_RUNTIME              = `${__dirname}/runtime`;
+const PATH_RUNTIME_SETTINGS     = `${PATH_RUNTIME}/settings`;
+const PATH_RUNTIME_SETTINGS_ZIP = `${PATH_RUNTIME}/settings.zip`;
+let zip;
 
-### fileSystemPromises.mustdir(dirPath) ⇒ <code>Promise.&lt;void&gt;</code>
-Crete path if not exists.
+describe('Testing module zipper', function() {
 
-**Kind**: static method of [<code>fileSystemPromises</code>](#fileSystemPromises)
+	before(async () => {
+		await fsp.mustdir(PATH_RUNTIME);
+		await fsp.mvdir(PATH_RUNTIME_SETTINGS);
+		await fsp.mvfile(PATH_RUNTIME_SETTINGS_ZIP);
+	});
 
-| Param | Type |
-| --- | --- |
-| dirPath | <code>string</code> |
+	it('test unpack', async () => {
+		zip = new Zipper();
 
-<a name="fileSystemPromises.mvdir"></a>
+		await zip.unpack(`${__dirname}/data/settings.zip`, PATH_RUNTIME);
 
-### fileSystemPromises.mvdir(dirPath) ⇒ <code>Promise.&lt;boolean&gt;</code>
-Remove directory. If directory not empty remove content and folder
+		assert.equal(await fsp.exists(PATH_RUNTIME_SETTINGS), true);
+	});
 
-**Kind**: static method of [<code>fileSystemPromises</code>](#fileSystemPromises)
+	it('test pack', async () => {
+		zip = new Zipper();
 
-| Param | Type |
-| --- | --- |
-| dirPath | <code>boolean</code> |
+		await zip.pack(PATH_RUNTIME_SETTINGS, PATH_RUNTIME_SETTINGS_ZIP);
 
-<a name="fileSystemPromises.mvfile"></a>
+		assert.equal(await fsp.exists(PATH_RUNTIME_SETTINGS_ZIP), true);
+	});
+});
 
-### fileSystemPromises.mvfile(dirFile) ⇒ <code>Promise.&lt;boolean&gt;</code>
-Remove file. If file not exists return true.
+```
+xz## Version
+1.0.1 - base.
 
-**Kind**: static method of [<code>fileSystemPromises</code>](#fileSystemPromises)
+## Extends
+[api description](https://github.com/eagle7410/fsp-eagle/blob/master/api-doc.md)
 
-| Param | Type |
-| --- | --- |
-| dirFile | <code>string</code> |
+## People
+Developer [Igor Stcherbina](https://github.com/eagle7410)
+
+## License
+
+MIT License
+
+Copyright (c) 2018 [Igor Stcherbina](https://github.com/eagle7410)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
