@@ -50,7 +50,7 @@ xz## Version
 1.0.1 - base.
 
 ## Extends
-[api description](https://github.com/eagle7410/fsp-eagle/blob/master/api-doc.md)
+[api description](https://github.com/eagle7410/jszipper/blob/master/api-doc.md)
 
 ## People
 Developer [Igor Stcherbina](https://github.com/eagle7410)
